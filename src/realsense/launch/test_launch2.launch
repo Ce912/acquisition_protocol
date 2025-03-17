@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name = "Ndemo" default="50"/>
+    <node name="acquisition_manager" pkg="acquisition" type="acquisition.py" output="screen">
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+        <param name="Ndemo" value="$(arg Ndemo)"/>
+    </node>
+
+</launch>

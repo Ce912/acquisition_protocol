@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+
+    <remap from="/camera/color/image_raw" to="/ImageCol_Ext"/>
+    <remap from="/camera/aligned_depth_to_color/image_raw" to="/RGBDImage_Ext"/>
+    <remap from="/camera/aligned_depth_to_color/camera_info" to="/RGBDCameraInfo_Ext"/>
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
+    <node name="RS_externalReader" pkg="realsense" type="RS_externalReader.py">
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+    <node/> <!--read acquisitation_config for setting output bag directory -->
+
+    <node name="optitrackReader" pkg="optitrack" type="optitrackReader.py">
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+    <node/>
+
+    <node name="gripperManager" pkg="optitrack" type= "gripper_reader.py"> 
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+    <node/>   <!--only gripper simulator-->
+
+    <node name="data_collector" pkg="tobii_glasses" type="record_image_gaze.py" output = "screen">
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+    <node/>
+  
+</launch>

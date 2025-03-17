@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <remap from="/camera/color/camera_info" to="/CameraInfo"/>
+    <remap from="/camera/color/image_raw/compressed" to="/ImageColor"/>
+    <remap from= "/camera/depth/image_raw" to="/ImageDepth"/>
+    <include file="$(find orbbec_camera)/launch/femto_bolt.launch"/>
+    <node name="Femto_Reader" pkg="femto" type="femto_reader.py">
+        <rosparam file="$(find acquisition)/config/acquisition_config.yaml" command="load" />
+    <node/> <!--read acquisitation_config for setting output bag directory -->
+    
+      
+</launch>

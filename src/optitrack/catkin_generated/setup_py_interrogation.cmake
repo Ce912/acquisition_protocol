@@ -1,0 +1,7 @@
+set(optitrack_SETUP_PY_SETUP_MODULE "distutils.core")
+set(optitrack_SETUP_PY_VERSION "0.0.0")
+set(optitrack_SETUP_PY_SCRIPTS "")
+set(optitrack_SETUP_PY_PACKAGES "optitrack")
+set(optitrack_SETUP_PY_PACKAGE_DIRS "src/optitrack")
+set(optitrack_SETUP_PY_MODULES "")
+set(optitrack_SETUP_PY_MODULE_DIRS "")

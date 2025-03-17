@@ -1,0 +1,5 @@
+static_obj: ["Black-Cup", "Plate", "Bowl"]
+dynamic_obj: ["Grape", "Green-Pepper", "Corn", "Red-Block", "Green-Block", "Eggplant", "Tomato", "Banana", "Carrot"]
+active_time: 5
+idle_time: 5
+output_dir : "./bags"

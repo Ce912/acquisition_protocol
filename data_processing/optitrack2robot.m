@@ -1,0 +1,19 @@
+function [transform] = optitrack2robot(franka_raw)
+    franka_raw_pose = zeros(3,1);
+    franka_raw_orient = zeros(4,1);
+    franka_raw_pose(1,1) = franka_raw{1}.Pose.Position.X;
+    franka_raw_pose(2,1) = franka_raw{1}.Pose.Position.Y;
+    franka_raw_pose(3,1) = franka_raw{1}.Pose.Position.Z;
+    franka_raw_orient(1,1) = franka_raw{1}.Pose.Orientation.W;
+    franka_raw_orient(2,1) = franka_raw{1}.Pose.Orientation.X;
+    franka_raw_orient(3,1) = franka_raw{1}.Pose.Orientation.Y;
+    franka_raw_orient(4,1) = franka_raw{1}.Pose.Orientation.Z;
+    franka_raw_quat = franka_raw_orient';
+    franka_raw_rotm = quat2rotm(franka_raw_quat);  %+ 9.5 deg around z
+    rot_ = eul2rotm([0,0,-pi/2], 'XYZ');
+    tot_rot = rot_*franka_raw_rotm;
+    %rot_inv = franka_raw_rotm';
+    rot_inv = tot_rot';
+    t_inv = - rot_inv * franka_raw_pose;
+    transform = [rot_inv, t_inv;[0,0,0,1]];  %GIUSTA
+end

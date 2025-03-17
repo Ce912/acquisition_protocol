@@ -15,16 +15,20 @@ Follow this order for avoiding any buffer issue.
 
 Terminal 1: 
 > roslaunch realsense test_launch.launch 
+
 This file will launch RS camera, the gripper simulator, the glasses data collector and the optitrack reader.
 For handling the gripper, (i.e. switch True/False: True = gripper open, False = gripper closed ), press the relative key ("Esc", by default).
 Add a terminal with rostopic echo /gripper_state to check the gripper status in realtime
 
 Terminal 2: 
-> roslaunch realsense test_launch_femto.launch 
+> roslaunch realsense test_launch_femto.launch
+
 Wait for Femto Node activation before launching other cameras
 
 Terminal 3: 
-> roslaunch realsense test_launch2.launch 
+> roslaunch realsense test_launch2.launch
+
+
 This launch file will start the acquisition manager node. Be ready for the acquisition!
 
 REMINDER: If you want to collect more than a set, change the output folder name ("bags" by default) after each round to avoid overwriting. 

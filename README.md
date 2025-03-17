@@ -1,6 +1,6 @@
 # acquisition_protocol
-This repo contains an efficient acquisition protocol for acquiring robotic dataset handling multiple sensors (Realsense and Femto camera, Tobii Pro Glasses, OptiTrack). 
-Each sensor is managed by a dedicated package (in /src) and its topics are saved in a separated bag. 
+This repo contains an efficient acquisition protocol for acquiring multimodal robotic dataset (Realsense and Femto camera, Tobii Pro Glasses, OptiTrack), comprising human-demonstrated tasks.
+Each sensor is managed by a dedicated package (in "/src") and its topics are saved in a separate bag. 
 The acquisition is handled by the AcquisitionManager node in the /acquisition package, which provides a vocal assistant for simple temporized acquisition. 
 Refer to the relative config file for setting the parameters (/acquisition/config/). 
 Prior acquisition, cameras must be calibrated and tobii glasses properly connected and calibrated. 
